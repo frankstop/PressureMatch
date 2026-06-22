@@ -325,9 +325,10 @@ body.bright .board-frame {
   position: absolute;
   inset: auto 0 0;
   height: 0%;
+  width: 100%;
   background: linear-gradient(0deg, #53ef9d 0%, #ffb238 58%, #ff3d57 100%);
   box-shadow: 0 0 28px rgba(255, 61, 87, 0.42);
-  transition: height 260ms ease;
+  transition: height 260ms ease, width 260ms ease;
 }
 
 .pressure-panel.danger {

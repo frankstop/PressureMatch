@@ -106,11 +106,13 @@ function render() {
 }
 
 function updateHud() {
+  const pressurePercent = `${Math.min(100, state.pressure)}%`;
+  const horizontalPressure = window.matchMedia('(max-width: 920px)').matches;
   els.score.textContent = state.score.toLocaleString();
   els.highScore.textContent = state.highScore.toLocaleString();
   els.pressureText.textContent = `${Math.round(state.pressure)}%`;
-  els.pressureFill.style.height = `${Math.min(100, state.pressure)}%`;
-  els.pressureFill.style.width = `${Math.min(100, state.pressure)}%`;
+  els.pressureFill.style.height = horizontalPressure ? '100%' : pressurePercent;
+  els.pressureFill.style.width = horizontalPressure ? pressurePercent : '100%';
   els.pressurePanel.classList.toggle('danger', state.pressure >= 78);
   els.moves.textContent = state.moves;
   els.time.textContent = formatTime(state.elapsed);
@@ -459,6 +461,7 @@ els.overlayRestartBtn.addEventListener('click', restart);
 els.pauseBtn.addEventListener('click', togglePause);
 els.resumeBtn.addEventListener('click', togglePause);
 els.themeBtn.addEventListener('click', toggleTheme);
+window.addEventListener('resize', updateHud);
 
 const requestedTheme = new URLSearchParams(window.location.search).get('theme');
 setTheme(requestedTheme === 'bright' ? 'bright' : localStorage.getItem('pressureMatchTheme') || 'night');

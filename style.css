@@ -303,7 +303,7 @@ body.bright .board-frame {
 .pressure-panel {
   min-height: 520px;
   justify-items: center;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(360px, 1fr) auto;
 }
 
 .pressure-head {
@@ -313,7 +313,7 @@ body.bright .board-frame {
 
 .pressure-track {
   position: relative;
-  width: 42px;
+  width: min(96px, 100%);
   height: 360px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.16);

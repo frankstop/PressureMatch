@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pressure Match</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSVR6Y389R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RSVR6Y389R');
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell" aria-label="Pressure Match game">
+      <section class="topbar" aria-label="Run stats">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <h1>Pressure Match</h1>
+            <p>Score before the board squeezes you out.</p>
+          </div>
+        </div>
+        <button id="themeBtn" class="theme-button" type="button" aria-label="Switch to bright mode" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+          <span id="themeLabel">Bright</span>
+        </button>
+        <div class="stats-grid">
+          <div class="stat">
+            <span>Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="stat">
+            <span>High</span>
+            <strong id="highScore">0</strong>
+          </div>
+          <div class="stat">
+            <span>Moves</span>
+            <strong id="moves">0</strong>
+          </div>
+          <div class="stat">
+            <span>Time</span>
+            <strong id="time">0:00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="play-area">
+        <aside class="side-panel left-panel" aria-label="Run details">
+          <div class="panel-block">
+            <span class="label">Difficulty</span>
+            <strong id="tier">Opening</strong>
+          </div>
+          <div class="panel-block">
+            <span class="label">Matches</span>
+            <strong id="matches">0</strong>
+          </div>
+          <div class="panel-block">
+            <span class="label">Largest Cascade</span>
+            <strong id="largestCascade">0</strong>
+          </div>
+          <div class="panel-block">
+            <span class="label">Reshuffles</span>
+            <strong id="reshuffles">0</strong>
+          </div>
+        </aside>
+
+        <div class="board-wrap">
+          <div class="board-frame">
+            <div id="board" class="board" role="grid" aria-label="Match three board"></div>
+          </div>
+          <div id="message" class="message" aria-live="polite">Make a match to start the run.</div>
+        </div>
+
+        <aside class="side-panel pressure-panel" aria-label="Pressure meter">
+          <div class="pressure-head">
+            <span class="label">Pressure</span>
+            <strong id="pressureText">0%</strong>
+          </div>
+          <div class="pressure-track" aria-hidden="true">
+            <div id="pressureFill" class="pressure-fill"></div>
+          </div>
+          <div class="actions">
+            <button id="pauseBtn" class="icon-button" type="button" aria-label="Pause">
+              <span aria-hidden="true">II</span>
+            </button>
+            <button id="restartBtn" class="icon-button" type="button" aria-label="Restart">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+      <div class="modal">
+        <p id="overlayKicker" class="modal-kicker">Paused</p>
+        <h2 id="overlayTitle">Run Paused</h2>
+        <div id="finalStats" class="final-stats"></div>
+        <div class="modal-actions">
+          <button id="resumeBtn" type="button">Resume</button>
+          <button id="overlayRestartBtn" type="button">Restart</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

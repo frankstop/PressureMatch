@@ -359,6 +359,7 @@ function checkEnd() {
 
 function showGameOver() {
   state.gameOver = true;
+  if (window.embedAnalytics) window.embedAnalytics.endRun('lose', state.score);
   clearInterval(state.timer);
   render();
   els.overlayKicker.textContent = getRank();
@@ -441,6 +442,7 @@ function restart() {
   setMessage('Make a match to start the run.');
   render();
   startTimer();
+  if (window.embedAnalytics) window.embedAnalytics.startRun('PressureMatch', () => state.score);
 }
 
 function setTheme(theme) {
